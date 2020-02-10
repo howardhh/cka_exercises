@@ -21,3 +21,20 @@ spec:
       imagePullPolicy: IfNotPresent 
 ```
 
+2. Update the DaemonSet above with newer version of the nginx:1.12.1-alpine server.
+```
+kubectl set image daemonset nginx-ds *=nginx:1.12.1-alpine
+```
+
+3. Change the updateStrategy to OnDelete and rollback to revision 1.
+```
+...
+spec:
+  updateStrategy:
+    type: OnDelete
+...
+```
+
+```
+kubectl rollout undo daemonset/nginx-ds --to-revision=1.
+```
