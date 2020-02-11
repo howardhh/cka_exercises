@@ -10,3 +10,6 @@
 	2. 3 env variables GREETING, HONORIFIC, and NAME are set to Warm greetings to, The Most Honorable, and Kubernetes.
 	3. run in the bash shell the command: echo $(GREETING) $(HONORIFIC) $(NAME), then sleep 5000.
 3. Set env variables with ConfigMap.
+    1. create a configmap name family with father=lkd, mother=tn, son=bob.
+	2. create a pod name shell-demo, image: nginx, env name (iam) from the key father of configmap family.
+	3. use envFrom to define all of the ConfigMap’s data as Pod environment variables.
