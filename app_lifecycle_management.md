@@ -13,3 +13,11 @@
     1. create a configmap name family with father=lkd, mother=tn, son=bob.
 	2. create a pod name shell-demo, image: nginx, env name (iam) from the key father of configmap family.
 	3. use envFrom to define all of the ConfigMap’s data as Pod environment variables.
+   
+### Configure Secrets.
+1. Create a secret name db-user-password with username=admin, password=kd248asid9sasp.
+2. Using Secrets as Files from a Pod
+	1. Create a pod name nginx, image=nginx
+	2. Make the Secret db-user-password available to the Pod as a mounted volume at /etc/db_confidentials
+	3. Verify the volume exits
+
