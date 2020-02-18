@@ -21,3 +21,6 @@
 	2. Make the Secret db-user-password available to the Pod as a mounted volume at /etc/db_confidentials
 	3. Verify the volume exits
 
+### How to scale applications.
+1. Create the Deployment with nginx image, scale to replicas=3.
+2. Change the deployment to autoscale, with target CPU utilization set to 80% and the number of replicas between 2 and 5.

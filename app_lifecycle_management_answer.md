@@ -111,3 +111,31 @@ spec:
         name: family
 ...
 ```
+
+### Configure Secrets.
+1. Create a secret name db-user-password with username=admin, password=kd248asid9sasp.
+```
+kubectl create secret generic db-user-password --from-literal=username=admin --from-literal=password=kd248a
+```
+
+2. Using Secrets as Files from a Pod
+	1. Create a pod name nginx, image=nginx
+	2. Make the Secret db-user-password available to the Pod as a mounted volume at /etc/db_confidentials
+	3. Verify the volume exits
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+	volumeMounts:
+	- name: confidential
+	  mountPath: /etc/db_confidentials
+  volumes:
+  - name: confidential
+    secret:
+	  secretName: db-user-password
+```
